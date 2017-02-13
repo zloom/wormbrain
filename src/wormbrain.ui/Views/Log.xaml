@@ -1,0 +1,14 @@
+﻿<controls:MetroWindow x:Class="wormbrain.ui.Views.Log"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:viewModels="clr-namespace:wormbrain.ui.ViewModels"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+        Title="Log" Height="300" Width="800" MinHeight="200" MinWidth="600">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>            
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <ListBox ItemsSource="{Binding Path = LogEntries}"/>        
+    </Grid>
+</controls:MetroWindow>

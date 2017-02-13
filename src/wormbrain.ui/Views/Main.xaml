@@ -1,0 +1,53 @@
+﻿<controls:MetroWindow x:Class="wormbrain.ui.Views.Main"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:viewModels="clr-namespace:wormbrain.ui.ViewModels"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+        Title="Game controller" Height="600" Width="800" MinHeight="200" MinWidth="600" WindowStartupLocation="CenterScreen">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" Grid.RowSpan="2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0" IsEnabled="{Binding DriverStarted, Converter={StaticResource InvertedBoolen}}" Command="{Binding StartDriverCommand}">Start driver</Button>
+                <Button Grid.Column="1" IsEnabled="{Binding DriverStarted}" Command="{Binding StopDriverCommand}">Stop driver</Button>
+
+                <Button Grid.Row="1" Grid.Column="0" IsEnabled="{Binding GameStarted, Converter={StaticResource InvertedBoolen}}" Command="{Binding StartGameCommand}">Start game</Button>
+                <Button Grid.Row="1" Grid.Column="1" IsEnabled="{Binding GameStarted}" Command="{Binding StopGameCommand}">Stop game</Button>               
+                
+                <CheckBox Grid.Row="3" Grid.ColumnSpan="2" Content="Freeze" IsChecked="{Binding Freeze}"/>
+                <CheckBox Grid.Row="4" Grid.ColumnSpan="2" Content="Input cohesion" IsChecked="{Binding InputСohesion}"/>
+                <CheckBox Grid.Row="5" Grid.ColumnSpan="2" Content="Output cohesion" IsChecked="{Binding OutputСohesion}"/>
+
+                <Button Grid.Row="6" Grid.ColumnSpan="2" Command="{Binding ShowTraceLogCommand}">Show trace log</Button>
+                <Button Grid.Row="7" Grid.ColumnSpan="2" Command="{Binding ShowBrowserLogCommand}">Show browser log</Button>
+            </Grid>
+        </StackPanel>
+
+        <Image Margin="3" Grid.Column="1" Source="{Binding OutputSource}" Stretch="Fill"/>
+        <TextBox Margin="3" Grid.Column="1" Grid.Row="1" IsReadOnly="True" Text="{Binding BrainOutput}"/>
+    </Grid>
+</controls:MetroWindow>
